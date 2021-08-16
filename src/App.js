@@ -1,5 +1,6 @@
 import React, {useState, useCallback, useEffect} from "react";
 import './App.css';
+import  InputComponent from  './InputComponent';
 
 function App() {
 
