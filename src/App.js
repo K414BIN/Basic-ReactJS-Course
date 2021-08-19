@@ -1,36 +1,33 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, {useState, useCallback, useEffect, useRef} from "react";
 import './App.css';
-import  InputComponent from  './InputComponent';
+import InputComponent from './InputComponent';
+import MessageList from "./MessageList";
 
 function App() {
 
-    const [ inputMessage, setInputMessage ] = useState("");
     const [messageArray, setMessageArray] = useState([]);
-    const onSendMessage = () =>{
-        setMessageArray((prev) => [...prev,inputMessage]);
-        setInputMessage("");
-    };
+    const onSendMessage = (messageText) =>{
+        setMessageArray((prev) => [...prev,[messageText]
+        /* не заработало!
+            {
+            messageText,
+            author: 'me'
+            }
+            */
+        ]);
+     };
+    useEffect(() =>{
+        if ( messageArray.length > 0 && messageArray.author !=="ROBOT" ) {
+                setTimeout(() => {
+                    let messageText = "Hello, human!";
+                    console.log(messageText)}  , 1000);
+            }}, [messageArray]);
 
     return (
-            <div className="mainWrapper">
-                        <div className="messageList">
-                        {messageArray.map(( message,i) =>(
-                            <div> key ={i}> {message}   </div>
-                        ))};
-                        </div>
-                        <div className="inputWrapper">
-                        <input type="text" required value={inputMessage}  onChange={(e) => setInputMessage(e.target.value)}
-                               onKeyDown={({key}) => {
-                                   if (key === 'Enter') {
-                                       console.log('Enter');
-                                       onSendMessage();
-                                   }
-                               }}
-                            />
-                            <button onClick={onSendMessage}>Отправить</button>
-                        </div>
-            </div>
-  );
-}
+        <div className="mainWrapper">
+            <MessageList messagesArray={messageArray}/>
+            <InputComponent onSendMessage={onSendMessage}/>
+        </div>
+    );}
 
 export default App;

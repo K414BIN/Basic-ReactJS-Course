@@ -26,3 +26,6 @@ input[type="text"]  {
     background-color: gold;
     justify-content: space-between;
 }
+.mainWrapper {
+    background-color: white;
+}
