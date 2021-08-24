@@ -38,7 +38,6 @@ function App() {
   const classes = useStyles();
   const [inputMessage, setInputMessage] = useState('');
   const [messagesArray, setMessagesArray] = useState([]);
-  const [botMessagesArray, setBotMessagesArray] = useState([]);
 
   const onSendMessage = () => {
     const trimmedMessageText = inputMessage.trim();
@@ -68,11 +67,11 @@ function App() {
       setTimeout(() => {
            }, 1500);
     };
-  }, [setBotMessagesArray, messagesArray]);
+  }, [setMessagesArray, messagesArray]);
 
     return( <div className={classes.appWrapper}>
                  <div className={classes.componentWrapper}>
-                   <MessageList messagesArray={messagesArray} botMessagesArray={botMessagesArray} />
+                   <MessageList messagesArray={messagesArray}  />
                    <MessageInput inputMessage={inputMessage} setInputMessage={setInputMessage} onSendMessage={onSendMessage} />
                 </div >
            </div >

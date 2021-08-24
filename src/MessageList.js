@@ -1,7 +1,7 @@
 
 const BotName = "ROBOT";
 
-const MessageList = ({ messagesArray, botMessagesArray }) => {
+const MessageList = ({ messagesArray }) => {
     return (
         <div className="messageList">
             {

@@ -1,5 +1,4 @@
-import {useRef, useState} from "react";
-import PropTypes from "prop-types";
+import {useEffect, useRef} from "react";
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -27,10 +26,15 @@ const useStyles = makeStyles((theme) =>({
         justifyContent: "space-between"
     }
 }));
+
 const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
+
     const classes = useStyles();
     const [inputRef, setInputFocus] = useFocus();
 
+    useEffect(() => {
+
+    }, [inputRef,setInputFocus]);
     return (
         <div className={classes.inputWrapper}>
             <TextField
@@ -49,7 +53,7 @@ const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
             <Button
                 color="primary"
                 variant="contained"
-                onClick={onSendMessage }
+                onClick={ onSendMessage }
                 ref={inputRef}
                 classes={{
                     root: classes.button,
