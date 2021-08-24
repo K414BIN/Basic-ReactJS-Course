@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-
+import  ChatList from './ChatList';
 import {makeStyles} from '@material-ui/core/styles';
 import "./App.css";
 
@@ -38,6 +38,7 @@ function App() {
   const classes = useStyles();
   const [inputMessage, setInputMessage] = useState('');
   const [messagesArray, setMessagesArray] = useState([]);
+  const [chatArray, setChatArray] = useState([]);
 
   const onSendMessage = () => {
     const trimmedMessageText = inputMessage.trim();
@@ -46,7 +47,8 @@ function App() {
       setMessagesArray(prev => [...prev,
       {
         trimmedMessageText,
-        author: me
+        author: me,
+        time: new Date().toLocaleTimeString(),
       },
       ]);
       setInputMessage('');
@@ -55,13 +57,16 @@ function App() {
         setMessagesArray(prev => [...prev,
           {
             trimmedMessageText :  'Сообщение отправлено!',
-            author: BotName
+            author: BotName,
+            time: new Date().toLocaleTimeString(),
           },
         ]);
       }, 1500);
       }
   };
-
+  useEffect(() => {
+    document.getElementsByClassName("messageList")[0].scrollTop = 9999;
+  });
   useEffect(() => {
     if (messagesArray.length > 0) {
       setTimeout(() => {
@@ -69,7 +74,8 @@ function App() {
     };
   }, [setMessagesArray, messagesArray]);
 
-    return( <div className={classes.appWrapper}>
+  return( <div className={classes.appWrapper}>
+          <ChatList chatArray={ chatArray } />
                  <div className={classes.componentWrapper}>
                    <MessageList messagesArray={messagesArray}  />
                    <MessageInput inputMessage={inputMessage} setInputMessage={setInputMessage} onSendMessage={onSendMessage} />

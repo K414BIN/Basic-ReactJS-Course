@@ -9,8 +9,11 @@ const MessageList = ({ messagesArray }) => {
                     const isMessageFromBot = message.author ===BotName;
                     return (
                     <>
-                        <div className={isMessageFromBot ? 'botMessageBlock':'myMessageBlock'}>
-                            <div className={isMessageFromBot ? 'botMessageTag' :'myMessageTag'}>{message.author}</div>
+                        <div className={isMessageFromBot ? 'botMessageBlock':'myMessageBlock'}
+                             key = {i}
+                             style={{overflowY: "auto",scrollBehavior : "smooth"}}
+                        >
+                            <div className={isMessageFromBot ? 'botMessageTag' :'myMessageTag'}>{message.author},{message.time}</div>
                             <div key={i} className={isMessageFromBot ? 'botMessage': 'myMessage'}>{message.trimmedMessageText}</div>
                         </div>
                     </>

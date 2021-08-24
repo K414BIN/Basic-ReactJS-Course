@@ -40,6 +40,9 @@ const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
             <TextField
                 label='Введите сообщение...'
                 value={inputMessage}
+                autoFocus={true}
+                multiline
+                maxRows={3}
                 onChange={e => setInputMessage(e.target.value)}
                 onKeyDown={({ key }) => {
                     if (key === 'Enter') {
