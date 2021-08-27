@@ -1,12 +1,16 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Chat from './Chat';
+import Home from "./home";
+import AppBar from "./appbar";
+import Chat from "./Chat/Chat";
 const App = () =>{
     return (
     <Router>
+        <AppBar />
         <Switch>
-                <Route  path="chat"></Route>
-                <Route  path="/"></Route>
+                <Route  path="/chat"><Chat /></Route>
+                <Route  path="/"> <Home /></Route>
         </Switch>        
-        </Ruter>
+    </Router>
                 );
 };
+export default App;

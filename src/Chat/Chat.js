@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-import  ChatList from './ChatList';
 
 import {makeStyles} from '@material-ui/core/styles';
-import "./App.css";
+
 
 const BotName = "ROBOT";
 const me="Alex";
@@ -85,4 +84,4 @@ function Chat() {
            </div >
     );
 }
-export default App;
+export default Chat;
