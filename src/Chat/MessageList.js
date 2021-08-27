@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 const BotName = "ROBOT";
 
@@ -22,5 +23,7 @@ const MessageList = ({ messagesArray }) => {
         </div>
     );
 };
-
+MessageList.protoTypes = {
+    messagesArray : PropTypes.array.isRequired
+}
 export default MessageList;

@@ -4,4 +4,4 @@ export default configureStore({
     reducer : {
         chat: chatReducer
     }
-})
+});

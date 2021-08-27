@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-
 import {makeStyles} from '@material-ui/core/styles';
 
 

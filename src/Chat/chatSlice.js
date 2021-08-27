@@ -6,11 +6,11 @@ export  const chatSlice = createSlice({
         lastMessageText: "",
     },
     reducers: {
-        incrementWithMessage: (state) => {
-            state.value +=1;
+        incrementWithoutMessage: (state) => {
+            state.countOfMessages += 1;
         },
-        incrementWithoutMessage: (state, action) => {
-            state.value +=1;
+        incrementWithMessage: (state, action) => {
+            state.countOfMessages += 1;
             state.lastMessageText = action.payload;
         },
     },
