@@ -10,9 +10,20 @@ const useStyles= makeStyles((theme) => ({
               color: theme.palette.background.default,
     },
 }));
+
+const routes = [
+    {
+        pathTitle: "Home",
+        path: "/home",
+    },
+    { pathTitle: "Chat", path: "/chat" },
+    { pathTitle: "Playground", path: "/playground" },
+];
+
 const AppBar = () => {
 const location = useLocation();
 const classes = useStyles();
+
 return (
     <MaterialUiAppBar className={classes.appBar} position = "static">
         <Toolbar>
