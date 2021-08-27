@@ -17,7 +17,7 @@ const routes = [
         path: "/home",
     },
     { pathTitle: "Chat", path: "/chat" },
-    { pathTitle: "Playground", path: "/playground" },
+
 ];
 
 const AppBar = () => {

@@ -1,9 +1,8 @@
 import React, { useState, useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import { makeStyles } from "@material-ui/core/styles";
-import { addMessage } from "./chatSlice";
+
 
 
 const useStyles = makeStyles((theme) =>({
@@ -23,12 +22,20 @@ const useStyles = makeStyles((theme) =>({
     },
 }));
 function Chat() {
-const {messagesArray} = useSelector((state) => state.chat);
-const dispatch = useDispatch();
+const [messagesArray, setMessagesArray] = useState([]);
+//const {messagesArray} = useSelector((state) => state.chat);
+
 const classes = useStyles();
 const onSendMessage = (messageText) => {
-    dispatch(addMessage ({ author: "Alex", messageText}));
+    setMessagesArray((prev) => [
+        ...prev,
+        {
+            messageText,
+            author: "Alex",
+        },
+    ]);
 };
+
 useEffect(() => {
     if (messagesArray.length >0 ){
         setTimeout(() => {

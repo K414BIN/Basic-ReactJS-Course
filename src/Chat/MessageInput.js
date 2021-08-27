@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -27,14 +27,21 @@ const useStyles = makeStyles((theme) =>({
     }
 }));
 
-const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
 
-    const classes = useStyles();
-    const [inputRef, setInputFocus] = useFocus();
 
-    useEffect(() => {
+    const MessageInput = ({ onSendMessage }) => {
+        const classes = useStyles();
+        const [inputMessage, setInputMessage] = useState("");
 
-    }, [inputRef,setInputFocus]);
+    const sendAndRemoveInput = () => {
+        const trimmedMessageText = inputMessage.trim();
+        if (trimmedMessageText !== "") {
+            onSendMessage(trimmedMessageText);
+            setInputMessage("");
+        }
+
+    };
+
     return (
         <div className={classes.inputWrapper}>
             <TextField
@@ -46,7 +53,7 @@ const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
                 onChange={e => setInputMessage(e.target.value)}
                 onKeyDown={({ key }) => {
                     if (key === 'Enter') {
-                        onSendMessage();
+                        sendAndRemoveInput();
                     }
                 }}
                 classes={{
@@ -56,8 +63,7 @@ const MessageInput = ({ inputMessage, setInputMessage, onSendMessage }) => {
             <Button
                 color="primary"
                 variant="contained"
-                onClick={ onSendMessage }
-                ref={inputRef}
+                onClick={  sendAndRemoveInput}
                 classes={{
                     root: classes.button,
                 }}
