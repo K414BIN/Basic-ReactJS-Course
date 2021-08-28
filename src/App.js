@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chat from "./Chat";
-import Playground from "./Playground";
 import Home from "./Home";
 import AppBar from "./AppBar";
 
@@ -13,12 +12,7 @@ const App = () => {
         <Route path="/chat">
           <Chat />
         </Route>
-
-        <Route path="/playground">
-          <Playground myProps={1} />
-        </Route>
-
-        <Route path="/">
+         <Route path="/">
           <Home />
         </Route>
       </Switch>

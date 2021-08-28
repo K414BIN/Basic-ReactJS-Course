@@ -4,6 +4,14 @@ export const chatSlice = createSlice({
   name: "chat",
   initialState: {
     messagesArray: [],
+    chats: [
+      {
+        id : 1,
+        name: "Joe Doe",
+        messagesArray : [],
+        avatarUrl: "",
+      }
+    ],
   },
   reducers: {
     addMessage: (state, action) => {
