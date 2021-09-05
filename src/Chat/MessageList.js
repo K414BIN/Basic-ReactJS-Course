@@ -8,24 +8,43 @@ const useStyles = makeStyles(() => ({
     height: "90%",
     borderBottom: "1px solid black",
     overflow: "auto",
-    flexDirection: "column",
     display: "flex",
+    flexDirection: "column",
   },
-    userMessage : {
-      alignSelf: "flex-end",
-    },
-    senderMessage: {
-      alignSelf: "flex-start",
-    },
+
+  senderMessage: {
+    alignSelf: "flex-start",
+  },
+  userMessage: {
+    alignSelf: "flex-end",
+  },
+
+  message: {
+    backgroundColor: "#A1A1A1",
+    padding: "5px",
+    margin: "10px 5px",
+    borderRadius: "30px",
+  },
 }));
 
 const MessageList = ({ messagesArray }) => {
   const classes = useStyles();
- const {myId} = useSelector((state) =>   state.chat);
+  const { myId } = useSelector((state) => state.chat);
+
   return (
     <div className={classes.messageList}>
       {messagesArray.map((message, i) => (
-        <div key={i} className={message.userId === myId ? classes.userMessage : classes.senderMessage}>{message.text}</div>
+        <div
+          key={i}
+          className={`
+            ${
+              message.userId === myId
+                ? classes.userMessage
+                : classes.senderMessage
+            } ${classes.message}`}
+        >
+          {message.text}
+        </div>
       ))}
     </div>
   );
