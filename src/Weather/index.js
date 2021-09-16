@@ -51,6 +51,6 @@ useEffect (() => {
     >
         Weather today
     </Button>
-     </div>   
+     </div>
 }
 export  default weather;

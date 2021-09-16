@@ -7,7 +7,7 @@ import weatherReducer from "./Weather/weatherSlice";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: [ "weather"]
+//  blacklist: [ "weather"]
 };
 
 const reducers = combineReducers({ chat: chatReducer, weather: weatherReducer });

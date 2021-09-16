@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Chat from "./Chat";
-import Weather from "./Weather";
-import Playground from "./Playground";
 import Home from "./Home";
+import Weather from "./Weather";
+import Chat from "./Chat";
+
 import AppBar from "./AppBar";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -24,11 +24,9 @@ const App = () => {
 
         <Switch>
           <Route path="/chat/:id">
-            <Chat />
+           <Chat />
           </Route>
-          <Route path="/playground">
-            <Playground myProps={1} />
-          </Route>
+
           <Route path="/weather">
             <Weather  />
           </Route>
