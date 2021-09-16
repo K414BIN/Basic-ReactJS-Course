@@ -1,8 +1,8 @@
 
 import {WEATHER_API_URL} from "./weatherSlice";
 import {setLoading,setData,setError} from "./weatherSlice";
-import weather from "./index";
-const getWeatherData = () => async (dispatch, getState) => {
+
+export const getWeatherData = () => async (dispatch, getState) => {
     const {weather: data, loading, error} = getState();
     if (!loading) {
         try {
@@ -22,4 +22,4 @@ const getWeatherData = () => async (dispatch, getState) => {
 
     }
 };
-export default  getWeatherData() ;
+export default  getWeatherData ;

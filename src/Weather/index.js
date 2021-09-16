@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import {getWeatherData} from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useCallback } from "react";
-import {CircularProgress} from "@material-ui/core/CircularProgress";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -31,25 +31,26 @@ const weather = () => {
   const classes = useStyles();
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
-
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { data, loading, error } = useSelector((state) => state.weather);
  // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect (() => {
   dispatch(getWeatherData());
   },[dispatch]);
 
   return <div className ={ classes.wrapper}>
-  <div className={classes.imageWrapper}>
-
-   {/* {loading && <CircularProgress />}*/}
-   {/* {error && <div> Возникла ошибка! <div>}*/}
-   {/*  {!loading && !error && data && () }*/}
+    <div className={classes.imageWrapper}>
+   {loading && <CircularProgress />}
+    {error && <div> Возникла ошибка! </div>}
+     {!loading && !error && data  }
 
   </div>
     <Button variant="outlined" color="primary"
-            //disabled = {loading}
-            onClick= {() =>getWeatherData()}>
+            disabled = {loading}
+            onClick= {() =>getWeatherData()}
+    >
         Weather today
     </Button>
-     </div>
-};
+     </div>   
+}
 export  default weather;
