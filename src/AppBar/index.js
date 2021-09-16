@@ -73,11 +73,12 @@ const routes = [
   },
   { pathTitle: "Chat", path: "/chat" },
   { pathTitle: "Playground", path: "/playground" },
+  { pathTitle: "Weather", path: "/weather" },
 ];
 
 const AppBar = () => {
   const classes = useStyles();
-
+  const history =  useHistory();
   const { profiles, messages } = useSelector((state) => state.chat);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -113,6 +114,7 @@ const AppBar = () => {
         >
           <MenuItem key={1}>Профиль</MenuItem>
           <MenuItem key={2}>Настройки</MenuItem>
+          <MenuItem key={3} Onclick={()=>history.push("/weather")}>Погода</MenuItem>
         </Menu>
 
         <TextField
