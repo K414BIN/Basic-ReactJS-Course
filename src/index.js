@@ -9,7 +9,6 @@ import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "./theme";
 import store from "./store";
 
-
 export const MyDataContext = React.createContext({ appVersion: "0.9-alpha" });
 
 ReactDOM.render(

@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Weather from "./Weather";
 import Chat from "./Chat";
-
+import Signup from "./Auth/Signup";
 import { makeStyles } from "@material-ui/core/styles";
 import {useEffect} from "react";
 import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "./firebase";
 import CustomRoute from "./util/CustomRoute";
+import firebase from "firebase/compat";
+import Login from "./Auth/Login";
 
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
@@ -17,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+firebase.initializeApp(firebaseConfig);
+export const db = firebase.database();
 
 const App = () => {
   const classes = useStyles();
@@ -39,10 +43,10 @@ const App = () => {
             <Chat />
           </CustomRoute>
           <Route path="/login">
-          <div> Login   </div>
+            <Login />
           </Route>
           <Route path="/signup">
-            <div> Signup   </div>
+           <Signup />
           </Route>
           <Route path="/" withAppBar = {false}>
             <Home />

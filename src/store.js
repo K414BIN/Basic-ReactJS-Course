@@ -13,7 +13,7 @@ const persistConfig = {
 
 const reducers = combineReducers({ chat: chatReducer, weather: weatherReducer });
 
-const persistedReducer = persistReducer(persistConfig, reducers)
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({
   reducer: persistedReducer,
