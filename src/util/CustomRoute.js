@@ -1,0 +1,16 @@
+import AppBar from "../AppBar";
+import {  useSelector } from "react-redux";
+import { Redirect, Route } from "react-router-dom";
+const CustomRoute = ( { secured ,withAppBar = true, children, ...rest } ) => {
+    const { isAuthenticated } = useSelector((state) =>   state.chat);
+    if (( secured && isAuthenticated) || !secured) {
+        return(
+            <Route {...rest}>
+                {withAppBar && <AppBar />}
+        {children};
+        </Route>
+    )
+    }
+return <Redirect to={{pathname :"/login"} }/>;
+}
+export default CustomRoute;

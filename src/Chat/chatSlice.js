@@ -4,6 +4,7 @@ import moment from "moment";
 export const chatSlice = createSlice({
   name: "chat",
   initialState: {
+    isAuthenticated : false,
     messages: {
       2: [
         {

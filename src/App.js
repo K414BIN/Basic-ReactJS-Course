@@ -3,8 +3,11 @@ import Home from "./Home";
 import Weather from "./Weather";
 import Chat from "./Chat";
 
-import AppBar from "./AppBar";
 import { makeStyles } from "@material-ui/core/styles";
+import {useEffect} from "react";
+import {initializeApp} from "firebase/app";
+import {firebaseConfig} from "./firebase";
+import CustomRoute from "./util/CustomRoute";
 
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
@@ -14,28 +17,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const App = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+   initializeApp(firebaseConfig);
+  },[]);
+
 
   return (
     <Router>
       <div className={classes.mainWrapper}>
-        <AppBar />
 
         <Switch>
 
-          <Route path="/weather">
+          <Route path="/weather" secured>
             <Weather  />
           </Route>
-          <Route path="/chat/:id">
+          <CustomRoute path="/chat/:id" secured withAppBar={true}>
             <Chat />
+          </CustomRoute>
+          <Route path="/login">
+          <div> Login   </div>
           </Route>
-
-          <Route path="/">
+          <Route path="/signup">
+            <div> Signup   </div>
+          </Route>
+          <Route path="/" withAppBar = {false}>
             <Home />
           </Route>
         </Switch>
-      </div>
+        </div>
     </Router>
   );
 };
