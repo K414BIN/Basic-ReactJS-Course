@@ -23,12 +23,12 @@ const App = () => {
         <AppBar />
 
         <Switch>
-          <Route path="/chat/:id">
-           <Chat />
-          </Route>
 
           <Route path="/weather">
             <Weather  />
+          </Route>
+          <Route path="/chat/:id">
+            <Chat />
           </Route>
 
           <Route path="/">
