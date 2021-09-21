@@ -29,7 +29,6 @@ const App = () => {
    initializeApp(firebaseConfig);
   },[]);
 
-
   return (
     <Router>
       <div className={classes.mainWrapper}>
